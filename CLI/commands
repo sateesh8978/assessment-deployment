@@ -1,0 +1,13 @@
+#create lambda function 
+$ aws lambda create-function --function-name ProcessSQSRecord \
+--zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x \
+--role arn:aws:iam::123456789012:role/lambda-sqs-role
+
+#$ aws lambda invoke --function-name ProcessSQSRecord \
+--payload file://input.txt outputfile.txt
+
+$ aws lambda create-event-source-mapping --function-name ProcessSQSRecord  --batch-size 10 \
+--event-source-arn arn:aws:sqs:us-east-2:123456789012:my-queue
+
+$ aws lambda list-event-source-mappings --function-name ProcessSQSRecord \
+--event-source-arn arn:aws:sqs:us-east-2:123456789012:my-queue

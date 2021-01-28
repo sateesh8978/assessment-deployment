@@ -1,0 +1,6 @@
+---
+# vars file for postgresql
+username: dbusername
+db_name: dbname
+password: dbpassword
+instance_id: 

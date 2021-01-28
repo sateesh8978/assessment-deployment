@@ -1,0 +1,19 @@
+---
+- name: use postgres role playbook
+  hosts: postgres
+  gather_facts: false
+  user: ec2-user
+  sudo: yes
+  sudo_user: root
+  become: true
+
+
+  vars_files:
+    - vars/main.yml
+  
+  vars:
+    domain: helloworld.com
+
+  roles:
+    - role: postgresql
+    - role: nginx
